@@ -10,26 +10,34 @@
 
             {!! Form::model($question, ['route' => 'questions.store']) !!}
                 <div class="form-group">
-                    {!! Form::label('name', 'Name') !!}
-                    {!! Form::select('size', ['L' => 'Large', 'S' => 'Small'], 'S'); !!}
+                    {!! Form::label('category', 'カテゴリー') !!}
+                    {!! Form::select('category', ['外遊び' => '外遊び', '内遊び' => '内遊び'], null, ['placeholder' => '遊びを選択してください']); !!}
                 </div>
 
                 <div class="form-group">
-                    {!! Form::label('email', 'Email') !!}
-                    {!! Form::email('email', null, ['class' => 'form-control']) !!}
+                    {!! Form::label('age', 'お子様の年齢') !!}
+                    {!! Form::selectRange('age', 0, 6, null, ['placeholder' => '']); !!}{{ ' 歳' }}
                 </div>
 
                 <div class="form-group">
-                    {!! Form::label('password', 'Password') !!}
-                    {!! Form::password('password', ['class' => 'form-control']) !!}
+                    {!! Form::label('title', 'タイトル') !!}
+                    {!! Form::text('title', null, ['class' => 'form-control']); !!}
                 </div>
 
                 <div class="form-group">
-                    {!! Form::label('password_confirmation', 'Confirmation') !!}
-                    {!! Form::password('password_confirmation', ['class' => 'form-control']) !!}
+                    {!! Form::label('content', '質問詳細') !!}
+                    {!! Form::textarea('content', null, ['class' => 'form-control']); !!}
                 </div>
 
-                {!! Form::submit('投稿', ['class' => 'btn btn-success btn-block']) !!}
+                <div class="form-button">
+                    {!! Form::submit('投稿', ['class' => 'btn btn-success btn-block']) !!}
+                </div>    
+                
+                <style>
+                    .form-button {
+                        margin-bottom: 20px;
+                    }
+                </style>
             {!! Form::close() !!}
         </div>
     </div>
