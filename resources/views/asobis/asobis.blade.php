@@ -2,16 +2,17 @@
     <ul class="list-unstyled">
         @foreach ($questions as $question)
             <li class="media mb-3">
-                <img class="mr-2 rounded" src="{{ Gravatar::get($question->user->email, ['size' => 100]) }}" alt="">
+                <img class="m-2 rounded-circle" src="{{ Gravatar::get($question->user->email, ['size' => 100]) }}" alt="">
                 <div class="media-body">
                     <div class="title-link">
-                        <p class="mb-0">{{ $question->title }}</p>
+                        <p class="mb-0">{!! link_to_route('questions.show', $question->title, ['question' => $question->id]) !!}</p>
                     </div>
                     <style>
                         /* 吹き出し本体 - 普通の吹き出し */
                         .title-link{
                             position: relative;
                             padding: 20px;
+                            margin: 10px;
                             background-color: #f7d2d2;
                             border-radius: 10px;         /* 角丸を指定 */
                         }
@@ -34,5 +35,5 @@
         @endforeach
     </ul>
     {{-- ページネーションのリンク --}}
-    {{-- {{ $questions->links() }} --}}
+    {{ $questions->links() }}
 @endif

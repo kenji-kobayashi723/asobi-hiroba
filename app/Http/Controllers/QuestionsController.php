@@ -13,12 +13,15 @@ class QuestionsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $questions = Question::all();
+        $asobi = $request->query('asobi');
+        
+        $questions = Question::where('questions.category', $asobi)->orderBy('created_at', 'desc')->paginate(20);
         
         return view('asobis.index', [
             'questions' => $questions,    
+            'asobi' => $asobi,
         ]);
     }
 

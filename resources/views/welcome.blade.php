@@ -27,8 +27,8 @@
     
         <div class="container">
             <div class="row">
-                <div class="offset-md-4 col-md-3"><a href="#" class="link">〇外遊び</a></div>
-                <div class="col-md-3"><a href="#" class="link">〇内遊び</a></div>
+                <div class="offset-md-4 col-md-3">{!! link_to_route('questions.index', '〇外遊び', ['asobi' => '外遊び']) !!}</a></div>
+                <div class="col-md-3">{!! link_to_route('questions.index', '〇内遊び', ['asobi' => '内遊び']) !!}</div>
             </div>
         </div>
     @else

@@ -4,7 +4,7 @@
     <div class="container">
         <div class="d-flex flex-row justify-content-center">
             <div class="p-2">
-                <h1>「〇〇遊び」に関する質問</h1>
+                <h1>「{{ $asobi }}」に関する質問</h1>
             </div>
             <div class="p-2">
                 {!! link_to_route('questions.create', '質問投稿', [], ['class' => 'btn btn-lg btn-success']) !!}
