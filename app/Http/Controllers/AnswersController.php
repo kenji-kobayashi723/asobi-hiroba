@@ -4,26 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Question;
 use App\Answer;
+use App\Question;
 
-class QuestionsController extends Controller
+class AnswersController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $asobi = $request->query('asobi');
-        
-        $questions = Question::where('questions.category', $asobi)->orderBy('created_at', 'desc')->paginate(20);
-        
-        return view('asobis.index', [
-            'questions' => $questions,    
-            'asobi' => $asobi,
-        ]);
+        //
     }
 
     /**
@@ -33,11 +26,7 @@ class QuestionsController extends Controller
      */
     public function create()
     {
-        $question = new Question;
-        
-        return view('asobis.question', [
-            'question' => $question,    
-        ]);
+        //
     }
 
     /**
@@ -46,19 +35,16 @@ class QuestionsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
+        $question = Question::findOrFail($id);
+        
         $request->validate([
-           'category' => 'required',
-           'age' => 'required',
-           'title' => 'required|max:255',
            'content' => 'required|max:10000',
         ]);
         
-        $request->user()->questions()->create([
-            'category' => $request->category,
-            'age' => $request->age,
-            'title' => $request->title,
+        $request->user()->answers()->create([
+            'question_id' => $question->id,
             'content' => $request->content,
         ]);
         
@@ -73,14 +59,7 @@ class QuestionsController extends Controller
      */
     public function show($id)
     {
-        $question = Question::findOrFail($id);
-        
-        $answers = Answer::where('answers.question_id', $question->id)->orderBy('created_at', 'desc')->paginate(20);
-        
-        return view('asobis.show', [
-            'question' => $question,    
-            'answers' => $answers,
-        ]);
+        //
     }
 
     /**
@@ -114,12 +93,6 @@ class QuestionsController extends Controller
      */
     public function destroy($id)
     {
-        $question = \App\Question::findOrFail($id);
-        
-        if (\Auth::id() === $question->user_id){
-            $question->delete();
-        }
-        
-        return back();
+        //
     }
 }

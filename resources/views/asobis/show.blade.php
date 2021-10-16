@@ -2,13 +2,22 @@
 
 @section('content')
     <div class="text-center">
-        <h1>「{{ $question->title }}」の質問</h1>
+        <h1>「{{ $question->title }}」の質問{{ $question->id }}</h1>
     </div>
     
     <div class="center row">
         <div class="col-sm-8 offset-sm-2">
             <div class="question">
                 @include('asobis.asobi')
+            </div>
+        </div>
+    </div>
+    
+    <div class="center row">
+        <div class="col-sm-8 offset-sm-2">
+            <div class="question">
+                <p class="text-center">回答</p>
+                @include('asobis.asobi_answer')
             </div>
         </div>
     </div>
@@ -27,9 +36,9 @@
     @if (Auth::id() != $question->user_id)
         <div class="answer-area">
             <div class="d-flex flex-row justify-content-center">
-                {!! Form::model($question, ['route' => 'questions.store', 'class' => 'form-inline']) !!}
+                {!! Form::open(['route' => ['answers.answer', $question->id], 'class' => 'form-inline']) !!}
                     <div class="form-group">
-                        {!! Form::textarea('content', null, ['class' => 'form-control', 'cols' => '100', 'rows' => '2']); !!}
+                        {!! Form::textarea('content', null, ['class' => 'form-control', 'cols' => '100', 'rows' => '2', 'placeholder' => '回答']); !!}
                     </div>
 
                     <div class="form-button">

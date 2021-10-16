@@ -26,4 +26,6 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
 
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('questions', 'QuestionsController');
+    
+    Route::post('questions/{id}/answers/store', 'AnswersController@store')->name('answers.answer');
 });
