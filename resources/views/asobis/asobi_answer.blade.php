@@ -4,7 +4,7 @@
             <li class="media mb-3">
                 <div class="media-body">
                     <div class="answer">
-                        <p class="mb-0">{{ $answer->content }}</p><br/>
+                        <p class="mb-0">{!! nl2br(e($answer->content)) !!}</p><br/>
                         <p style="color: #808080;">{{ $answer->user->name }}</p>
                     </div>
                     <style>

@@ -1,4 +1,4 @@
-<header class="mb-4">
+<header class="mb-0">
     <nav class="navbar navbar-expand-sm navbar-light" style="background-color:#f7d2d2;">
         {{-- トップページへのリンク --}}
         <a class="navbar-brand" href="/">子どもの遊び広場</a>

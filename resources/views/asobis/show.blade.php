@@ -1,8 +1,29 @@
 @extends('layouts.app')
 
 @section('content')
+    <div class="p-breadcrumb">
+        <div class="d-flex flex-row bd-highlight mb-3">
+            <a class="pl-2 pt-1" href="/" style="color:#808080;">子どもの遊び広場</a>
+            <img src="/images/yajirushi.png" width="30" height="30" style="padding-top: 1px;">
+            <div class="text-muted pl-2 pt-1">{!! link_to_route('questions.index', $question->category, ['asobi' => $question->category], ['style' => 'color:#808080;']) !!}</div>
+            <img src="/images/yajirushi.png" width="30" height="30" style="padding-top: 1px;">
+            <a class="pl-0 pt-1">質問詳細</a>
+        </div>
+    </div>
+    
+    <style>
+        .p-breadcrumb {
+            left: 0;
+            margin-right: calc(50% - 50vw);
+            margin-left: calc(50% - 50vw);
+            padding-right: calc(50vw - 50%);
+            padding-left: calc(50vw - 50%);
+            background-color: #FFCCFF;
+        }
+    </style>
+    
     <div class="text-center">
-        <h1>「{{ $question->title }}」の質問{{ $question->id }}</h1>
+        <h1>「{{ $question->title }}」の質問</h1>
     </div>
     
     <div class="center row">
@@ -25,14 +46,10 @@
     <style>
         .question {
             background-color: #FFFFCC;
+            margin-bottom: 60px;
         }
     </style>
     
-    {{-- スクロール確認用 --}}
-    <img src="/images/kakurenbo.png">
-    <img src="/images/ball.png">
-    
-    {{-- 固定を確認するためにquestionを利用　後でanswerに変更 --}}
     @if (Auth::id() != $question->user_id)
         <div class="answer-area">
             <div class="d-flex flex-row justify-content-center">

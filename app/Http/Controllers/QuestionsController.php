@@ -18,7 +18,13 @@ class QuestionsController extends Controller
     {
         $asobi = $request->query('asobi');
         
-        $questions = Question::where('questions.category', $asobi)->orderBy('created_at', 'desc')->paginate(20);
+        $age = $request->query('age');
+        
+        if (isset($age)) {
+            $questions = Question::where('questions.category', $asobi)->where('questions.age', $age)->orderBy('created_at', 'desc')->paginate(20);
+        } else {
+            $questions = Question::where('questions.category', $asobi)->orderBy('created_at', 'desc')->paginate(20);
+        }
         
         return view('asobis.index', [
             'questions' => $questions,    

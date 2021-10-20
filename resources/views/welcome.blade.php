@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="mt-4">
     @if (Auth::check())
         <div class="label">
             <img src="/images/dance_youchien.png" width="200" height="200">
@@ -27,7 +28,7 @@
     
         <div class="container">
             <div class="row">
-                <div class="offset-md-4 col-md-3">{!! link_to_route('questions.index', '〇外遊び', ['asobi' => '外遊び']) !!}</a></div>
+                <div class="offset-md-4 col-md-3">{!! link_to_route('questions.index', '〇外遊び', ['asobi' => '外遊び']) !!}</div>
                 <div class="col-md-3">{!! link_to_route('questions.index', '〇内遊び', ['asobi' => '内遊び']) !!}</div>
             </div>
         </div>
@@ -42,4 +43,5 @@
             </div>
         </div>
     @endif
+</div>
 @endsection
