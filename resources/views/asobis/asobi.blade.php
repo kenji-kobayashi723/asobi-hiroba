@@ -3,7 +3,7 @@
         <img class="m-2 rounded-circle" src="{{ Gravatar::get($question->user->email, ['size' => 100]) }}" alt="">
         <div class="media-body">
             <div class="title-link">
-                <p class="mb-0">{{ $question->content }}</p><br/>
+                <p class="mb-0">{!! nl2br(e($question->content)) !!}</p><br/>
                 <p style="color: #808080;">{{ $question->user->name }}({{ $question->age }}歳)</p>
             </div>
             <style>

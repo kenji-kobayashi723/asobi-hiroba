@@ -18,6 +18,10 @@ class QuestionsController extends Controller
     {
         $asobi = $request->query('asobi');
         
+        if( empty($asobi) ){
+            return redirect('/');
+        }
+        
         $age = $request->query('age');
         
         if (isset($age)) {
