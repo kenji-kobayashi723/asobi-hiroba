@@ -72,7 +72,7 @@ class QuestionsController extends Controller
             'content' => $request->content,
         ]);
         
-        return back();
+        return redirect('/');
     }
 
     /**

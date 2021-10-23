@@ -31,6 +31,8 @@
         </div>
     </div>
     
+    <?php $age = request()->input('age'); ?>
+    
     <div class="center row">
         <div class="col-sm-8 offset-sm-2">
             <div class="search">
@@ -42,31 +44,31 @@
                         {{ Form::label('age-label', 'すべて', ['class' => 'form-check-label']) }}
                     </div>
                     <div class="form-check form-check-inline">
-                        {{ Form::radio('age', '0', false, ['id' => 'radio-one', 'class' => 'form-check-input']) }}
+                        {{ Form::radio('age', '0', request()->input('age') == '0' ? true : false, ['id' => 'radio-one', 'class' => 'form-check-input']) }}
                         {{ Form::label('age-label', '0歳', ['class' => 'form-check-label']) }}
                     </div>
                     <div class="form-check form-check-inline">
-                        {{ Form::radio('age', '1', false, ['id' => 'radio-one', 'class' => 'form-check-input']) }}
+                        {{ Form::radio('age', '1', request()->input('age') == '1' ? true : false, ['id' => 'radio-one', 'class' => 'form-check-input']) }}
                         {{ Form::label('age-label', '1歳', ['class' => 'form-check-label']) }}
                     </div>
                     <div class="form-check form-check-inline">
-                        {{ Form::radio('age', '2', false, ['id' => 'radio-one', 'class' => 'form-check-input']) }}
+                        {{ Form::radio('age', '2', request()->input('age') == '2' ? true : false, ['id' => 'radio-one', 'class' => 'form-check-input']) }}
                         {{ Form::label('age-label', '2歳', ['class' => 'form-check-label']) }}
                     </div>
                     <div class="form-check form-check-inline">
-                        {{ Form::radio('age', '3', false, ['id' => 'radio-one', 'class' => 'form-check-input']) }}
+                        {{ Form::radio('age', '3', request()->input('age') == '3' ? true : false, ['id' => 'radio-one', 'class' => 'form-check-input']) }}
                         {{ Form::label('age-label', '3歳', ['class' => 'form-check-label']) }}
                     </div>
                     <div class="form-check form-check-inline">
-                        {{ Form::radio('age', '4', false, ['id' => 'radio-one', 'class' => 'form-check-input']) }}
+                        {{ Form::radio('age', '4', request()->input('age') == '4' ? true : false, ['id' => 'radio-one', 'class' => 'form-check-input']) }}
                         {{ Form::label('age-label', '4歳', ['class' => 'form-check-label']) }}
                     </div>
                     <div class="form-check form-check-inline">
-                        {{ Form::radio('age', '5', false, ['id' => 'radio-one', 'class' => 'form-check-input']) }}
+                        {{ Form::radio('age', '5', request()->input('age') == '5' ? true : false, ['id' => 'radio-one', 'class' => 'form-check-input']) }}
                         {{ Form::label('age-label', '5歳', ['class' => 'form-check-label']) }}
                     </div>
                     <div class="form-check form-check-inline">
-                        {{ Form::radio('age', '6', false, ['id' => 'radio-one', 'class' => 'form-check-input']) }}
+                        {{ Form::radio('age', '6', request()->input('age') == '6' ? true : false, ['id' => 'radio-one', 'class' => 'form-check-input']) }}
                         {{ Form::label('age-label', '6歳', ['class' => 'form-check-label']) }}
                     </div>
                     {!! Form::submit('絞り込み', ['class' => 'btn btn-info btn-block']) !!}
