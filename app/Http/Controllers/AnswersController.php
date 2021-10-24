@@ -93,6 +93,12 @@ class AnswersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $answer = \App\Answer::findOrFail($id);
+        
+        if (\Auth::id() === $answer->user_id){
+            $answer->delete();
+        }
+        
+        return back();
     }
 }

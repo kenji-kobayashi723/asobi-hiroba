@@ -28,4 +28,5 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('questions', 'QuestionsController');
     
     Route::post('questions/{id}/answers/store', 'AnswersController@store')->name('answers.answer');
+    Route::delete('answers/{id}', 'AnswersController@destroy')->name('answers.destroy');
 });

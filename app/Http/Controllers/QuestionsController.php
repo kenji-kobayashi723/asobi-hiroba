@@ -130,6 +130,6 @@ class QuestionsController extends Controller
             $question->delete();
         }
         
-        return back();
+        return redirect('/');
     }
 }

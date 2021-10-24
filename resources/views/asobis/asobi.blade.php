@@ -1,6 +1,16 @@
 <ul class="list-unstyled">
     <li class="media mb-3">
-        <img class="m-2 rounded-circle" src="{{ Gravatar::get($question->user->email, ['size' => 100]) }}" alt="">
+        <div class="flexbox">
+            <img class="m-2 rounded-circle" src="{{ Gravatar::get($question->user->email, ['size' => 100]) }}" alt="">
+            <div class="ml-3 p-2">
+                @if (Auth::id() == $question->user_id)
+                    {{-- 投稿削除ボタンのフォーム --}}
+                    {!! Form::open(['route' => ['questions.destroy', $question->id], 'method' => 'delete']) !!}
+                        {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}
+                    {!! Form::close() !!}
+                @endif
+            </div>
+        </div>
         <div class="media-body">
             <div class="title-link">
                 <p class="mb-0">{!! nl2br(e($question->content)) !!}</p><br/>
@@ -27,6 +37,11 @@
                     border-right: 15px solid #f7d2d2;
                     border-top: 15px solid transparent;
                     border-bottom: 15px solid transparent;
+                }
+                
+                .flexbox{
+                    display: flex;
+                    flex-direction: column;
                 }
             </style>
         </div>

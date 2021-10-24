@@ -31,7 +31,17 @@
                         }
                     </style>
                 </div>
-                <img class="m-2 rounded-circle" src="{{ Gravatar::get($answer->user->email, ['size' => 100]) }}" alt="">
+                <div class="flexbox">
+                    <img class="m-2 rounded-circle" src="{{ Gravatar::get($answer->user->email, ['size' => 100]) }}" alt="">
+                    <div class="ml-3 p-2">
+                        @if (Auth::id() == $answer->user_id)
+                            {{-- 投稿削除ボタンのフォーム --}}
+                            {!! Form::open(['route' => ['answers.destroy', $answer->id], 'method' => 'delete']) !!}
+                                {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}
+                            {!! Form::close() !!}
+                        @endif
+                    </div>
+                </div>
             </li>
         @endforeach
     </ul>

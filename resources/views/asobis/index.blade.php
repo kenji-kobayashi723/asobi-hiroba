@@ -31,8 +31,6 @@
         </div>
     </div>
     
-    <?php $age = request()->input('age'); ?>
-    
     <div class="center row">
         <div class="col-sm-8 offset-sm-2">
             <div class="search">
